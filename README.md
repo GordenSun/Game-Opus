@@ -4,6 +4,8 @@
 
 🎮 在线试玩：**https://gordensun.github.io/Game-Opus/**
 
+> 首次部署需要在仓库 `Settings → Pages → Build and deployment → Source` 选择 **GitHub Actions**，即可自动通过 `.github/workflows/pages.yml` 部署。
+
 ## 游戏列表
 
 | 游戏 | 玩法 | 操作 |
