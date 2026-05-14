@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>太空大战 · Game Opus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="stylesheet" href="../../shared/loader.css">
+</head>
+<body>
+  <div class="game-shell">
+    <canvas id="game" class="game-canvas" width="540" height="800"></canvas>
+  </div>
+  <div class="hud" id="hud">
+    <span><b>分数</b><span id="hud-score">0</span></span>
+    <span><b>生命</b><span id="hud-life">3</span></span>
+    <span><b>波次</b><span id="hud-wave">1</span></span>
+  </div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

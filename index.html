@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Opus · Kenney 像素街机厅</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#0f1226">
+  <meta name="description" content="使用 Kenney CC0 素材打造的网页小游戏合集 - 太空射击、坦克对战、Tappy Plane、动物记忆、平台跳跃">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="shared/loader.css">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body class="home">
+  <div class="stars" id="stars"></div>
+
+  <header class="home-header">
+    <div class="brand">
+      <div class="logo">🕹️</div>
+      <div>
+        <h1>Game Opus</h1>
+        <p>5 款 Kenney 素材打造的网页街机小游戏 · 单文件 · 无后端 · 立即开玩</p>
+      </div>
+    </div>
+    <a class="github-link" href="https://github.com/GordenSun/Game-Opus" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.24 3.35.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.08 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+      源码
+    </a>
+  </header>
+
+  <main class="grid">
+    <a class="card" href="games/space-shooter/index.html" style="--c1:#5af2ff;--c2:#5e8bff;">
+      <div class="cover cover-space"></div>
+      <div class="info">
+        <h2>🚀 太空大战</h2>
+        <p>纵向卷轴射击 · 闪避陨石与敌舰，连击爆破刷新分数</p>
+        <div class="tags"><span>射击</span><span>键鼠/触屏</span></div>
+      </div>
+    </a>
+
+    <a class="card" href="games/tank-battle/index.html" style="--c1:#a3ff5a;--c2:#5aff9b;">
+      <div class="cover cover-tank"></div>
+      <div class="info">
+        <h2>💥 坦克竞技场</h2>
+        <p>俯视角坦克战 · 击败敌方坦克，物理弹道与履带涂鸦</p>
+        <div class="tags"><span>动作</span><span>WASD</span></div>
+      </div>
+    </a>
+
+    <a class="card" href="games/tappy-plane/index.html" style="--c1:#ffd25a;--c2:#ff8a5a;">
+      <div class="cover cover-plane"></div>
+      <div class="info">
+        <h2>✈️ Tappy Plane</h2>
+        <p>飞翔小飞机 · 节奏点击穿越巨石，挑战连续金星纪录</p>
+        <div class="tags"><span>休闲</span><span>一键操作</span></div>
+      </div>
+    </a>
+
+    <a class="card" href="games/memory-cards/index.html" style="--c1:#ff5ac8;--c2:#c45aff;">
+      <div class="cover cover-cards"></div>
+      <div class="info">
+        <h2>🐯 动物记忆</h2>
+        <p>翻牌配对 · 30 种可爱动物 · 三档难度比拼最少步数</p>
+        <div class="tags"><span>益智</span><span>记忆力</span></div>
+      </div>
+    </a>
+
+    <a class="card" href="games/platformer/index.html" style="--c1:#5affae;--c2:#5ae8ff;">
+      <div class="cover cover-platformer"></div>
+      <div class="info">
+        <h2>🌟 像素冒险</h2>
+        <p>横版跳跃 · 收集宝石击败敌人，抵达终点旗帜</p>
+        <div class="tags"><span>平台</span><span>方向键</span></div>
+      </div>
+    </a>
+  </main>
+
+  <footer class="home-footer">
+    所有图像素材来自 <a href="https://kenney.nl/assets" target="_blank" rel="noopener">Kenney</a> · CC0 协议 ·
+    本项目仅作个人学习与展示
+  </footer>
+
+  <script>
+    // 背景星空粒子（纯 DOM/CSS，超轻量）
+    const sc = document.getElementById('stars');
+    const COUNT = 90;
+    for (let i = 0; i < COUNT; i++) {
+      const s = document.createElement('span');
+      const size = Math.random() * 2 + 1;
+      s.style.cssText = `
+        position:absolute;
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        width:${size}px;
+        height:${size}px;
+        border-radius:50%;
+        background:#fff;
+        opacity:${0.2 + Math.random()*0.6};
+        animation: twinkle ${2+Math.random()*4}s ease-in-out ${Math.random()*4}s infinite;
+        box-shadow:0 0 ${size*3}px rgba(255,255,255,0.6);
+      `;
+      sc.appendChild(s);
+    }
+  </script>
+</body>
+</html>

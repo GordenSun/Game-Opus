@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>像素冒险 · Game Opus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="stylesheet" href="../../shared/loader.css">
+  <style>
+    .touch-controls {
+      position: fixed;
+      bottom: 16px;
+      left: 0; right: 0;
+      display: none;
+      justify-content: space-between;
+      padding: 0 18px;
+      z-index: 40;
+      pointer-events: none;
+    }
+    .touch-controls .group { display: flex; gap: 14px; pointer-events: auto; }
+    .touch-btn {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(20,22,50,0.7);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text);
+      font-size: 26px;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .touch-btn:active { background: rgba(90, 242, 255, 0.3); }
+    body.is-touch .touch-controls { display: flex; }
+  </style>
+</head>
+<body>
+  <div class="game-shell">
+    <canvas id="game" class="game-canvas" width="900" height="540"></canvas>
+  </div>
+  <div class="hud" id="hud">
+    <span><b>金币</b><span id="hud-coins">0</span></span>
+    <span><b>宝石</b><span id="hud-gems">0</span></span>
+    <span><b>生命</b><span id="hud-life">3</span></span>
+    <span><b>关卡</b><span id="hud-level">1</span></span>
+  </div>
+  <div class="touch-controls">
+    <div class="group">
+      <div class="touch-btn" id="btn-left">◀</div>
+      <div class="touch-btn" id="btn-right">▶</div>
+    </div>
+    <div class="group">
+      <div class="touch-btn" id="btn-jump">▲</div>
+    </div>
+  </div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

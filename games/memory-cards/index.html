@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>动物记忆 · Game Opus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="stylesheet" href="../../shared/loader.css">
+  <style>
+    body.memory { overflow-y: auto; height: auto; min-height: 100%; }
+    .memory-page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 80px 16px 40px;
+    }
+    .difficulty {
+      display: flex;
+      gap: 10px;
+      margin: 0 0 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .difficulty button {
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .difficulty button.active {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #0a0c1e;
+      border-color: transparent;
+    }
+    .difficulty button:hover:not(.active) { background: rgba(255,255,255,0.15); }
+    .stats {
+      display: flex;
+      gap: 22px;
+      margin-bottom: 18px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .stats span b { color: var(--accent); margin-right: 4px; }
+    .board {
+      display: grid;
+      gap: 10px;
+      perspective: 1000px;
+    }
+    .card {
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .45s cubic-bezier(.5,.1,.3,1.2);
+      border-radius: 14px;
+    }
+    .card.flipped { transform: rotateY(180deg); }
+    .card.matched { transform: rotateY(180deg) scale(0.95); filter: brightness(1.1) drop-shadow(0 0 10px rgba(90,242,255,0.6)); pointer-events: none; }
+    .face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .face.front {
+      background: linear-gradient(135deg, #ff5ac8, #c45aff);
+      transform: rotateY(0deg);
+      color: rgba(255,255,255,0.7);
+      font-size: 28px;
+      font-weight: 900;
+    }
+    .face.back {
+      background: #fff;
+      transform: rotateY(180deg);
+    }
+    .face.back canvas { width: 80%; height: 80%; }
+    @media (max-width: 480px) {
+      .card { border-radius: 10px; }
+      .face { border-radius: 10px; }
+    }
+  </style>
+</head>
+<body class="memory">
+  <div class="memory-page">
+    <div class="difficulty">
+      <button class="active" data-d="easy">简单 4×3</button>
+      <button data-d="medium">普通 6×4</button>
+      <button data-d="hard">困难 6×6</button>
+    </div>
+    <div class="stats">
+      <span><b>步数</b><span id="stat-moves">0</span></span>
+      <span><b>配对</b><span id="stat-matches">0</span> / <span id="stat-total">6</span></span>
+      <span><b>用时</b><span id="stat-time">0:00</span></span>
+    </div>
+    <div class="board" id="board"></div>
+  </div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

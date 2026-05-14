@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>坦克竞技场 · Game Opus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="stylesheet" href="../../shared/loader.css">
+</head>
+<body>
+  <div class="game-shell">
+    <canvas id="game" class="game-canvas" width="800" height="640"></canvas>
+  </div>
+  <div class="hud" id="hud">
+    <span><b>得分</b><span id="hud-score">0</span></span>
+    <span><b>生命</b><span id="hud-life">5</span></span>
+    <span><b>击杀</b><span id="hud-kill">0</span></span>
+  </div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

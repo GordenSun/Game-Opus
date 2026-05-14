@@ -1,0 +1,256 @@
+html, body.home { overflow-y: auto; height: auto; min-height: 100%; }
+body.home {
+  padding: 32px 24px 60px;
+  position: relative;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+@keyframes twinkle {
+  0%, 100% { transform: scale(1); opacity: .35; }
+  50% { transform: scale(1.6); opacity: 1; }
+}
+
+.home-header {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.logo {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 12px 30px rgba(90, 242, 255, 0.35);
+}
+.brand h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: .02em;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background .2s ease;
+}
+.github-link:hover { background: rgba(255,255,255,0.12); }
+
+.grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(20, 22, 50, 0.55);
+  border: 1px solid rgba(255,255,255,0.08);
+  text-decoration: none;
+  color: var(--text);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(8px);
+}
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  opacity: 0;
+  mix-blend-mode: overlay;
+  transition: opacity .25s ease;
+}
+.card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.18); box-shadow: 0 22px 60px rgba(0,0,0,0.6); }
+.card:hover::after { opacity: .35; }
+
+.cover {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(20,22,50,0.85) 100%);
+}
+
+/* 每个游戏的封面：使用 SVG gradient + emoji + 形状构建独特视觉 */
+.cover-space {
+  background:
+    radial-gradient(circle at 30% 30%, #5e8bff 0%, transparent 40%),
+    radial-gradient(circle at 70% 65%, #5af2ff 0%, transparent 35%),
+    radial-gradient(circle at 50% 80%, #ff5ac8 0%, transparent 35%),
+    #0a0c1e;
+}
+.cover-space::before {
+  content: '🚀';
+  position: absolute;
+  font-size: 64px;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%) rotate(-25deg);
+  filter: drop-shadow(0 0 18px rgba(90, 242, 255, 0.7));
+}
+
+.cover-tank {
+  background:
+    radial-gradient(circle at 30% 50%, #5aff9b 0%, transparent 45%),
+    radial-gradient(circle at 70% 50%, #a3ff5a 0%, transparent 40%),
+    linear-gradient(135deg, #1a3a1f, #0e2412);
+}
+.cover-tank::before {
+  content: '🛡️';
+  position: absolute;
+  font-size: 60px;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  filter: drop-shadow(0 0 18px rgba(163, 255, 90, 0.6));
+}
+
+.cover-plane {
+  background:
+    radial-gradient(ellipse at 30% 40%, #ffd25a 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, #ff8a5a 0%, transparent 50%),
+    linear-gradient(180deg, #5dc4ff, #2b6cb0);
+}
+.cover-plane::before {
+  content: '✈️';
+  position: absolute;
+  font-size: 64px;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%) rotate(-15deg);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+}
+
+.cover-cards {
+  background:
+    radial-gradient(circle at 30% 30%, #ff5ac8 0%, transparent 45%),
+    radial-gradient(circle at 70% 70%, #c45aff 0%, transparent 45%),
+    linear-gradient(135deg, #2b1240, #1a0826);
+}
+.cover-cards::before {
+  content: '🐼 🦁 🐸';
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 32px;
+  letter-spacing: 12px;
+  filter: drop-shadow(0 0 10px rgba(255, 90, 200, 0.5));
+}
+
+.cover-platformer {
+  background:
+    radial-gradient(circle at 20% 80%, #5affae 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, #5ae8ff 0%, transparent 40%),
+    linear-gradient(180deg, #1a2440, #122036);
+}
+.cover-platformer::before {
+  content: '🌟';
+  position: absolute;
+  font-size: 60px;
+  left: 50%; top: 45%;
+  transform: translate(-50%,-50%);
+  filter: drop-shadow(0 0 18px rgba(90, 255, 174, 0.7));
+}
+
+.info {
+  padding: 18px 20px 20px;
+  position: relative;
+  z-index: 1;
+}
+.info h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 800;
+}
+.info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  min-height: 40px;
+}
+.tags {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tags span {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.home-footer {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 50px auto 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+.home-footer a { color: var(--accent); text-decoration: none; }
+.home-footer a:hover { text-decoration: underline; }
+
+@media (max-width: 540px) {
+  body.home { padding: 20px 14px 40px; }
+  .brand h1 { font-size: 22px; }
+  .brand p { font-size: 12px; }
+  .logo { width: 52px; height: 52px; font-size: 26px; }
+}
